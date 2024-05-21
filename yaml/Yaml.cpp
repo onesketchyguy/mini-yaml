@@ -23,6 +23,8 @@
 *
 */
 
+#ifndef YAML
+
 #include "Yaml.hpp"
 #include <memory>
 #include <fstream>
@@ -2780,3 +2782,5 @@ namespace Yaml
 
 
 }
+
+#endif // YAML
