@@ -37,6 +37,7 @@ https://www.codeproject.com/Articles/28720/YAML-Parser-in-C
 #include <sstream>
 #include <algorithm>
 #include <map>
+#include <vector>
 
 /**
 * @breif Namespace wrapping mini-yaml classes.
@@ -551,8 +552,11 @@ namespace Yaml
         * @breif Assignment operators.
         *
         */
-        Node & operator = (const Node & node);
-        Node & operator = (const std::string & value);
+        Node & operator = (const Node& node);
+        Node & operator = (const std::string& value);
+        Node & operator = (const int& value);
+        Node & operator = (const double& value);
+        Node & operator = (const float& value);
         Node & operator = (const char * value);
 
         /**
@@ -569,6 +573,13 @@ namespace Yaml
         Iterator End();
         ConstIterator End() const;
 
+
+        // FIXME: This does not work
+        /**
+        * @breif Add a sequence to this object
+        *
+        */
+       void AddSequence(std::vector<std::string>);
 
     private:
 

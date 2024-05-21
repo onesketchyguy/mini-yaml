@@ -239,6 +239,3 @@ void Example4()
     }
 
 }
-
-
-

@@ -62,3 +62,6 @@ CppCheckResults*
 *.exe
 *.out
 *.app
+
+# vscode
+.vscode
