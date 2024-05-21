@@ -73,7 +73,7 @@ std::vector<std::string> names {
   "Jarod", "Mark", "Luise", "Felicia"
 };
 
-YAML::Node::AddSequence(list["names"], names);
+YAML::AddSequence(list["names"], names);
 ```
 
 ## Build status

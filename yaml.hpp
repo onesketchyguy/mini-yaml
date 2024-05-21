@@ -572,14 +572,6 @@ namespace YAML
         Iterator End();
         ConstIterator End() const;
 
-
-        // FIXME: This does not work
-        /**
-        * @breif Add a sequence to this object
-        *
-        */
-       static void AddSequence(Node&, std::vector<std::string>);
-
     private:
 
         /**
@@ -662,6 +654,12 @@ namespace YAML
     void Serialize(const Node & root, const char * filename, const SerializeConfig & config = {2, 64, false, false});
     void Serialize(const Node & root, std::iostream & stream, const SerializeConfig & config = {2, 64, false, false});
     void Serialize(const Node & root, std::string & string, const SerializeConfig & config = {2, 64, false, false});
+
+    /**
+    * @breif Add a sequence to a node
+    *
+    */
+    static void AddSequence(Node&, std::vector<std::string>);
 
 }
 
@@ -1852,15 +1850,6 @@ namespace YAML
         }
 
         return it;
-    }
-
-    void Node::AddSequence(Node& node, std::vector<std::string> v)
-    {
-        for (int i = 0; i < v.size(); i++)
-        {
-            node.PushBack();
-            node[i] = v.at(i);
-        }
     }
 
     const std::string & Node::AsString() const
@@ -3157,7 +3146,14 @@ namespace YAML
         string = stream.str();
     }
 
-
+    void AddSequence(Node& node, std::vector<std::string> v)
+    {
+        for (int i = 0; i < v.size(); i++)
+        {
+            node.PushBack();
+            node[i] = v.at(i);
+        }
+    }
 
     // Static function implementations
     std::string ExceptionMessage(const std::string & message, ReaderLine & line)
