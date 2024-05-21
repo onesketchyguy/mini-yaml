@@ -1741,6 +1741,8 @@ namespace YAML
 
     Iterator Node::Begin()
     {
+        if (this->Size() == 0) return{};
+
         Iterator it;
 
         if(TYPE_IMP != nullptr)
@@ -1771,6 +1773,8 @@ namespace YAML
 
     ConstIterator Node::Begin() const
     {
+        if (this->Size() == 0) return{};
+
         ConstIterator it;
 
         if(TYPE_IMP != nullptr)
@@ -1801,6 +1805,8 @@ namespace YAML
 
     Iterator Node::End()
     {
+        if (this->Size() == 0) return{};
+
        Iterator it;
 
         if(TYPE_IMP != nullptr)
