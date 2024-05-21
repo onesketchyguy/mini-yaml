@@ -65,20 +65,26 @@ ref["key"] = "value";     // Modifying "root" node content.
 YAML::Node copy = root;   // The content of "root" is copied to "copy".
                           // Slow operation if "root" contains a lot of content.
 copy["key"] = "value";    // Modifying "copy" node content. "root" is left untouched.
+```
 
-// You can also push vectors into a list
-YAML::Node list1;
-
+You can create sequences in the following manors;
+```cpp
 std::vector<std::string> names {
   "Jarod", "Mark", "Luise", "Felicia"
 };
 
-YAML::AddSequence(list1["names"], names);
+YAML::Node method1; // The standard method, simply manually add each value into the node sequence
+for (int i = 0; i < names.size(); i++)
+{
+  method1["names"].PushBack();
+  method1["names"][i] = names.at(i);
+}
 
-// Or alternatively
-YAML::Node list2;
-list2["names"] = names; // This will just call the above function
+YAML::Node method2; // The added method, simply call the AddSequence function
+YAML::AddSequence(method2["names"], names);
 
+YAML::Node method3; // The operator method, this will call this above AddSequence function
+method3["names"] = names;
 ```
 
 ## Build status
