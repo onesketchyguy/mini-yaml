@@ -96,3 +96,4 @@ Builds are passed if all tests are good and no memory leaks were found.
 - Added type abstraction layer so you don't have to cast things to strings before serializing them.
 - Removed unnecessary work folders.
 - Updated gitignore to ignore vscode stuff.
+- Added `AddSequence(node, std::vector)` to YAML namespace.
