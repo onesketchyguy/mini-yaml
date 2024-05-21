@@ -1,4 +1,4 @@
-# mini-yaml post 2018
+# mini-yaml
 [![Build Status](https://travis-ci.org/onesketchyguy/mini-yaml.svg?branch=master)](https://github.com/onesketchyguy/mini-yaml#build-status)
 Single header YAML 1.0 C++11 serializer/deserializer.
 Looking for [mini-yaml by jimmiebergman?](https://github.com/jimmiebergmann/mini-yaml)
@@ -110,3 +110,4 @@ Builds are passed if all tests are good and no memory leaks were found.
 - Updated gitignore to ignore vscode stuff.
 - Added `AddSequence(node, std::vector)` to YAML namespace.
 - Added sequence operator to Node
+- Added empty check to iterators, preventing looping endlessly. NOTE: This does NOT fix the iterator bug.
