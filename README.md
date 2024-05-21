@@ -1,5 +1,5 @@
 # mini-YAML
-[![Build Status](https://travis-ci.org/jimmiebergmann/mini-YAML.svg?branch=master)](https://github.com/jimmiebergmann/mini-YAML#build-status)  
+[![Build Status](https://travis-ci.org/onesketchyguy/mini-yaml.svg?branch=master)](https://github.com/onesketchyguy/mini-yaml#build-status)
 Single header YAML 1.0 C++11 serializer/deserializer.
 
 ## Quickstart
@@ -44,8 +44,14 @@ boolean: true
 See  [Best practice](https://github.com/jimmiebergmann/mini-YAML#best-practice).
 
 ## Usage
-Put [/YAML](https://github.com/jimmiebergmann/mini-YAML/blob/master/YAML) in your project directory and simply #include "[YAML/YAML.hpp](https://github.com/jimmiebergmann/mini-YAML/blob/master/YAML/YAML.hpp)".
-See [examples/FirstExample.cpp](https://github.com/jimmiebergmann/mini-YAML/blob/master/examples/FirstExample.cpp) for additional examples.
+Put [/YAML](https://github.com/onesketchyguy/mini-yaml/blob/master/yaml.hpp) in your project directory and #include "[yaml.hpp](https://github.com/onesketchyguy/mini-yaml/blob/master/yaml.hpp)"
+
+```cpp
+#define YAML_DEF
+#include <yaml.hpp>
+```
+
+See [examples/FirstExample.cpp](https://github.com/jimmiebergmann/mini-yaml/blob/master/examples/FirstExample.cpp) for additional examples.
 
 ## Best practice
 Always use references when accessing node content, if not intended to make a copy. Modifying copied node wont affect the original node content.  
@@ -75,8 +81,7 @@ Builds are passed if all tests are good and no memory leaks were found.
 
 | Branch | Status |
 | ------ | ------ |
-| master | [![Build Status](https://travis-ci.org/jimmiebergmann/mini-YAML.svg?branch=master)](https://travis-ci.org/jimmiebergmann/mini-YAML) |
-| dev | [![Build Status](https://travis-ci.org/jimmiebergmann/mini-YAML.svg?branch=dev)](https://travis-ci.org/jimmiebergmann/mini-YAML)|
+| master | [![Build Status](https://travis-ci.org/onesketchyguy/mini-yaml.svg?branch=master)](https://github.com/onesketchyguy/mini-yaml#build-status) |
 
 ## Todo
 - Parse/serialize tags(!!type).
@@ -85,3 +90,9 @@ Builds are passed if all tests are good and no memory leaks were found.
 - Parse complex keys.
 - Parse sets.
 
+
+## Changes from jimmiebergmann-mini-yaml
+- Moved to a single header with a define instead of a header and cpp combo.
+- Added type abstraction layer so you don't have to cast things to strings before serializing them.
+- Removed unnecessary work folders.
+- Updated gitignore to ignore vscode stuff.
