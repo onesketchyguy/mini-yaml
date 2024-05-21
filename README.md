@@ -111,3 +111,4 @@ Builds are passed if all tests are good and no memory leaks were found.
 - Added `AddSequence(node, std::vector)` to YAML namespace.
 - Added sequence operator to Node
 - Added empty check to iterators, preventing looping endlessly. NOTE: This does NOT fix the iterator bug.
+- Fixed `~ is not included`

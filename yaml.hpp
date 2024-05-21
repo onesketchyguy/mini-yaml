@@ -2109,12 +2109,8 @@ namespace YAML
 
                 // Validate characters.
                 for (size_t i = 0; i < line.size(); i++)
-                {
-                    if (line[i] != '\t' && (line[i] < 32 || line[i] > 125))
-                    {
+                    if (line[i] != '\t' && (line[i] < 32 || line[i] > 126))
                         throw ParsingException(ExceptionMessage(g_ErrorInvalidCharacter, lineNo, i + 1));
-                    }
-                }
 
                 // Validate tabs
                 const size_t firstTabPos    = line.find_first_of('\t');
