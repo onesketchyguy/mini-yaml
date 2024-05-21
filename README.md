@@ -41,10 +41,10 @@ integer: 123
 boolean: true
 ```
 
-See  [Best practice](https://github.com/jimmiebergmann/mini-YAML#best-practice).
+See  [Best practice](https://github.com/onesketchyguy/mini-YAML#best-practice).
 
 ## Usage
-Put [/YAML](https://github.com/onesketchyguy/mini-yaml/blob/master/yaml.hpp) in your project directory and #include "[yaml.hpp](https://github.com/onesketchyguy/mini-yaml/blob/master/yaml.hpp)"
+Put [yaml.hpp](https://github.com/onesketchyguy/mini-yaml/blob/master/yaml.hpp) in your project directory and
 
 ```cpp
 #define YAML_DEF
@@ -91,7 +91,7 @@ Builds are passed if all tests are good and no memory leaks were found.
 - Parse sets.
 
 
-## Changes from jimmiebergmann-mini-yaml
+## Changes from [jimmiebergmann-mini-yaml](https://github.com/jimmiebergmann/mini-YAML)
 - Moved to a single header with a define instead of a header and cpp combo.
 - Added type abstraction layer so you don't have to cast things to strings before serializing them.
 - Removed unnecessary work folders.
