@@ -67,13 +67,18 @@ YAML::Node copy = root;   // The content of "root" is copied to "copy".
 copy["key"] = "value";    // Modifying "copy" node content. "root" is left untouched.
 
 // You can also push vectors into a list
-YAML::Node list;
+YAML::Node list1;
 
 std::vector<std::string> names {
   "Jarod", "Mark", "Luise", "Felicia"
 };
 
-YAML::AddSequence(list["names"], names);
+YAML::AddSequence(list1["names"], names);
+
+// Or alternatively
+YAML::Node list2;
+list2["names"] = names; // This will just call the above function
+
 ```
 
 ## Build status
@@ -97,3 +102,4 @@ Builds are passed if all tests are good and no memory leaks were found.
 - Removed unnecessary work folders.
 - Updated gitignore to ignore vscode stuff.
 - Added `AddSequence(node, std::vector)` to YAML namespace.
+- Added sequence operator to Node

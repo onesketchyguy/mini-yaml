@@ -555,6 +555,7 @@ namespace YAML
         Node & operator = (const Node& node);
         Node & operator = (const std::string& value);
         Node & operator = (const char * value);
+        Node & operator = (std::vector<std::string>);
         template<typename T>
         Node & operator = (const T& value) { return (*this=std::to_string(value)); }
 
@@ -1711,24 +1712,30 @@ namespace YAML
         return TYPE_IMP->Erase(key);
     }
 
-    Node & Node::operator = (const Node & node)
+    Node & Node::operator=(const Node & node)
     {
         NODE_IMP->Clear();
         CopyNode(node, *this);
         return *this;
     }
 
-    Node & Node::operator = (const std::string & value)
+    Node & Node::operator=(const std::string & value)
     {
         NODE_IMP->InitScalar();
         TYPE_IMP->SetData(value);
         return *this;
     }
 
-    Node & Node::operator = (const char * value)
+    Node & Node::operator=(const char * value)
     {
         NODE_IMP->InitScalar();
         TYPE_IMP->SetData(value ? std::string(value) : "");
+        return *this;
+    }
+
+    Node & Node::operator=(std::vector<std::string> v)
+    {
+        YAML::AddSequence(*this, v);
         return *this;
     }
 
