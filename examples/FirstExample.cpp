@@ -23,6 +23,7 @@
 *
 */
 
+#define YAML
 #include <Yaml.hpp>
 
 using namespace Yaml;
