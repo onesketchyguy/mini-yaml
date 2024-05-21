@@ -43,7 +43,7 @@ https://www.codeproject.com/Articles/28720/YAML-Parser-in-C
 * @breif Namespace wrapping mini-yaml classes.
 *
 */
-namespace Yaml
+namespace YAML
 {
 
     /**
@@ -578,7 +578,7 @@ namespace Yaml
         * @breif Add a sequence to this object
         *
         */
-       void AddSequence(std::vector<std::string>);
+       static void AddSequence(Node&, std::vector<std::string>);
 
     private:
 
@@ -666,7 +666,7 @@ namespace Yaml
 }
 
 
-#ifdef YAML
+#ifdef YAML_DEF
 
 #include <memory>
 #include <fstream>
@@ -684,7 +684,7 @@ namespace Yaml
 #define IT_IMP static_cast<IteratorImp*>(m_pImp)
 
 
-namespace Yaml
+namespace YAML
 {
     class ReaderLine;
 
@@ -704,7 +704,7 @@ namespace Yaml
     static const std::string g_ErrorInvalidBlockScalar      = "Invalid block scalar.";
     static const std::string g_ErrorInvalidQuote            = "Invalid quote.";
     static const std::string g_EmptyString                  = "";
-    static Yaml::Node        g_NoneNode;
+    static YAML::Node        g_NoneNode;
 
     // Global function definitions. Implemented at end of this source file.
     static std::string ExceptionMessage(const std::string & message, ReaderLine & line);
@@ -1854,12 +1854,12 @@ namespace Yaml
         return it;
     }
 
-    void Node::AddSequence(std::vector<std::string> v)
+    void Node::AddSequence(Node& node, std::vector<std::string> v)
     {
         for (int i = 0; i < v.size(); i++)
         {
-            PushBack();
-            this[i] = v.at(i);
+            node.PushBack();
+            node[i] = v.at(i);
         }
     }
 

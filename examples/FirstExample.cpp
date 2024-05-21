@@ -23,10 +23,10 @@
 *
 */
 
-#define YAML
+#define YAML_DEF
 #include <Yaml.hpp>
 
-using namespace Yaml;
+using namespace YAML;
 
 static void Example1();
 static void Example2();
