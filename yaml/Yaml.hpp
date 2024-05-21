@@ -554,10 +554,9 @@ namespace Yaml
         */
         Node & operator = (const Node& node);
         Node & operator = (const std::string& value);
-        Node & operator = (const int& value);
-        Node & operator = (const double& value);
-        Node & operator = (const float& value);
         Node & operator = (const char * value);
+        template<typename T>
+        Node & operator = (const T& value) { return (*this=std::to_string(value)); }
 
         /**
         * @breif Get start iterator.

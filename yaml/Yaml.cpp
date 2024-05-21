@@ -1085,27 +1085,6 @@ namespace Yaml
         return *this;
     }
 
-    Node & Node::operator = (const int& value)
-    {
-        NODE_IMP->InitScalar();
-        TYPE_IMP->SetData(std::to_string(value));
-        return *this;
-    }
-
-    Node & Node::operator = (const double& value)
-    {
-        NODE_IMP->InitScalar();
-        TYPE_IMP->SetData(std::to_string(value));
-        return *this;
-    }
-
-    Node & Node::operator = (const float& value)
-    {
-        NODE_IMP->InitScalar();
-        TYPE_IMP->SetData(std::to_string(value));
-        return *this;
-    }
-
     Node & Node::operator = (const char * value)
     {
         NODE_IMP->InitScalar();
