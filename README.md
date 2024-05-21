@@ -1,4 +1,4 @@
-# mini-YAML
+# mini-yaml
 [![Build Status](https://travis-ci.org/onesketchyguy/mini-yaml.svg?branch=master)](https://github.com/onesketchyguy/mini-yaml#build-status)
 Single header YAML 1.0 C++11 serializer/deserializer.
 
