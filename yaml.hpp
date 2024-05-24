@@ -39,6 +39,10 @@ https://www.codeproject.com/Articles/28720/YAML-Parser-in-C
 #include <map>
 #include <vector>
 
+#ifndef STD_QUOTES 0
+    #define STD_QUOTES 1
+#endif // STD_QUOTES
+
 /**
 * @breif Namespace wrapping mini-yaml classes.
 *
@@ -2592,7 +2596,7 @@ namespace YAML
                     data += " ";
                 }
 
-                if(ValidateQuote(data) == false)
+                if (ValidateQuote(data) == false)
                 {
                     throw ParsingException(ExceptionMessage(g_ErrorInvalidQuote, *pFirstLine));
                 }
@@ -3298,39 +3302,27 @@ namespace YAML
 
     bool ValidateQuote(const std::string & input)
     {
-        if(input.size() == 0)
-        {
-            return true;
-        }
+        if(input.size() == 0) return true;
 
         char token = 0;
         size_t searchPos = 0;
         if(input[0] == '\"' || input[0] == '\'')
         {
-            if(input.size() == 1)
-            {
-                return false;
-            }
+            if(input.size() == 1) return false;
             token = input[0];
             searchPos = 1;
         }
 
+#if(STD_QUOTES == 1)
         while(searchPos != std::string::npos && searchPos < input.size() - 1)
         {
             searchPos = input.find_first_of("\"'", searchPos + 1);
-            if(searchPos == std::string::npos)
-            {
-                break;
-            }
+            if (searchPos == std::string::npos) break;
 
             const char foundToken = input[searchPos];
-
             if(input[searchPos] == '\"' || input[searchPos] == '\'')
             {
-                if(token == 0 && input[searchPos-1] != '\\')
-                {
-                    return false;
-                }
+                if(token == 0 && input[searchPos-1] != '\\') return false;
                 //if(foundToken == token)
                 //{
 
@@ -3352,11 +3344,15 @@ namespace YAML
                         }
                         return false;
                     }
+
                 //}
             }
         }
 
         return token == 0;
+#else
+        return true;
+#endif // STD_QUOTES
     }
 
     void CopyNode(const Node & from, Node & to)
