@@ -2558,10 +2558,7 @@ namespace YAML
             if(isBlockScalar)
             {
                 ++it;
-                if(it == m_Lines.end() || (pLine = *it)->Type != Node::ScalarType)
-                {
-                    return;
-                }
+                if (it == m_Lines.end() || (pLine = *it)->Type != Node::ScalarType) return;
             }
 
             // Not a block scalar, cut end spaces/tabs
@@ -2571,27 +2568,15 @@ namespace YAML
                 {
                     pLine = *it;
 
-                    if(parentOffset != 0 && pLine->Offset <= parentOffset)
-                    {
-                        throw ParsingException(ExceptionMessage(g_ErrorIncorrectOffset, *pLine));
-                    }
+                    if(parentOffset != 0 && pLine->Offset <= parentOffset) throw ParsingException(ExceptionMessage(g_ErrorIncorrectOffset, *pLine));
 
                     const size_t endOffset = pLine->Data.find_last_not_of(" \t");
-                    if(endOffset == std::string::npos)
-                    {
-                        data += "\n";
-                    }
-                    else
-                    {
-                        data += pLine->Data.substr(0, endOffset + 1);
-                    }
+                    if(endOffset == std::string::npos) data += "\n";
+                    else data += pLine->Data.substr(0, endOffset + 1);
 
                     // Move to next line
                     ++it;
-                    if(it == m_Lines.end() || (*it)->Type != Node::ScalarType)
-                    {
-                        break;
-                    }
+                    if(it == m_Lines.end() || (*it)->Type != Node::ScalarType) break;
 
                     data += " ";
                 }
@@ -2678,10 +2663,7 @@ namespace YAML
                 }
             }
 
-            if(data.size() && (data[0] == '"' || data[0] == '\''))
-            {
-                data = data.substr(1, data.size() - 2 );
-            }
+            if (data.size() && (data[0] == '"' || data[0] == '\'')) data = data.substr(1, data.size() - 2 );
 
             node = data;
         }
